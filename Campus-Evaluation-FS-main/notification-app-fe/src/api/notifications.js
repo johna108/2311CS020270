@@ -5,11 +5,10 @@ import { Log } from "@logging/log.js";
  * Fetch notifications.
  * @param {{ notification_type?: string, page?: number, limit?: number }} opts
  */
-export async function fetchNotifications({ notification_type, page, limit } = {}) {
+export async function fetchNotifications({ notification_type, page } = {}) {
   const params = new URLSearchParams();
   if (notification_type) params.set("notification_type", notification_type);
   if (page) params.set("page", page);
-  if (limit) params.set("limit", limit);
 
   const qs = params.toString();
   Log("frontend", "debug", "api", `GET /notifications${qs ? "?" + qs : ""}`);
